@@ -1,0 +1,19 @@
+body {
+  background-color: #EBA61E;
+}
+
+h1 {
+  text-align: center;
+}
+
+#nav {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+}

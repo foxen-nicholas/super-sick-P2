@@ -5,7 +5,7 @@ const Express = require('express');
 // require and set view engine using ejs
 const ejsLayouts = require('express-ejs-layouts')
 //require all middleware for ap/authentication
-// helmet, morga, passport, and custom middleware, express-session, sequelize session, flash
+// helmet, morgan, passport, and custom middleware, express-session, sequelize session, flash
 const helmet = require('helmet');
 const session = require('express-session');
 const flash = require('flash');
