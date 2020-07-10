@@ -1,0 +1,13 @@
+<h1>Miscellaneous Recipes</h1>
+
+<% meals.forEach(meal => { %>
+  <div style="background-color: #f00;display:inline-block; margin-top:10px">
+    <div style="background-color: #0f0; width:200px">
+      <a href="https://www.themealdb.com/api/json/v1/1/lookup.php?i=<%= meal.idMeal%>"><img style="height:150px;width:150px" src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>"></a>
+    </div>
+    <br />
+    <div style="background-color: #00f; width: 150px">
+      <%= meal.strMeal %>
+    </div> 
+  </div>
+<% }) %>

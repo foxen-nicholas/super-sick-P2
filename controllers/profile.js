@@ -18,5 +18,14 @@ router.get('/', function(req, res) {
   }).catch(errorHandler)
 });
 
+router.get('/beef', function(req, res) {
+  var beefUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef";
+
+  axios.get(beefUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('profile/beef')
+  })
+})
 
 module.exports = router;
