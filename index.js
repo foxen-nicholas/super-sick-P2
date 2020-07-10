@@ -1,6 +1,6 @@
 // Required NPM libraries
 require('dotenv').config();
-
+const axios = require('axios');
 const Express = require('express');
 // require and set view engine using ejs
 const ejsLayouts = require('express-ejs-layouts')
@@ -51,18 +51,27 @@ app.use(function(req,res, next) {
   next();
 })
 
-// ROUTES
-app.get('/', function(req, res) {
-  // check to see if the user logged in
-  res.render('index')
-})
 
-app.get('/profile', isLoggedIn, function(req, res) {
-  res.render('profile');
-})
+// ROUTES
+
+app.get('/', function(req, res) {
+  res.render("index");
+});
+
+// app.get('/profile', isLoggedIn, function(req, res) {
+//   var mealUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
+
+//   axios.get(mealUrl).then(function(apiResponse) {
+//     console.log(apiResponse);
+//     var category = apiResponse.data.results;
+//     res.render('profile/index', { category: category})
+//   }).catch(errorHandler)
+// })
 
 // include auth controllers 
+app.use('/profile', require('./controllers/profile'));
 app.use('/auth', require('./controllers/auth'));
+app.use('/categories', require('./controllers/categories'));
 // initialize 
 app.listen(process.env.PORT || 3000, function() {
   console.log(`Rootin n Tootin on port ${process.env.PORT}`)

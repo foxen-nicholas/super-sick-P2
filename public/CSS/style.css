@@ -17,3 +17,16 @@ a {
   margin-right: 10px;
   font-size: 20px;
 }
+
+#notCurrentUser {
+  display: block;
+  text-align: center;
+}
+
+#register {
+  text-align: center;
+}
+
+#login {
+  text-align: center;
+}

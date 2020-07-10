@@ -9,7 +9,6 @@
   <body>
    
     <div class="container">
-      <%- body %>
     </div>
     <nav id="nav">
       <% if (currentUser) { %>
@@ -18,9 +17,9 @@
         <a href="/profile/index">Profile</a>
         <a href="/profile/show">Favorites</a>
       <% } else { %>
+        <div id="notCurrentUser">
         <p>If you already have an account, simply click login and you will be directed to your profile/favorites page</p>
-        <br>
-        <div>
+        <p>Otherwise, please register and enjoy my app!</p>
         <nav id="notCurrentUser">
           <a href="/auth/register">Register</a>
           <a href="/auth/login">Login</a>
@@ -28,5 +27,6 @@
         </div>
       <% } %>
     </nav>
+    <%- body %>
   </body>
 </html>
