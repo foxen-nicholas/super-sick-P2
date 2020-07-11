@@ -53,4 +53,96 @@ router.get('/lamb', function(req, res) {
   })
 })
 
+router.get('/pasta', function(req, res) {
+  var pastaUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Pasta";
+
+  axios.get(pastaUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/pasta', {meals:meals});
+  })
+})
+
+router.get('/pork', function(req, res) {
+  var porkUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Pork";
+
+  axios.get(porkUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/pork', {meals:meals});
+  })
+})
+
+router.get('/seafood', function(req, res) {
+  var seafoodUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood";
+
+  axios.get(seafoodUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/seafood', {meals:meals});
+  })
+})
+
+router.get('/side', function(req, res) {
+  var sideUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Side";
+
+  axios.get(sideUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/side', {meals:meals});
+  })
+})
+
+router.get('/starter', function(req, res) {
+  var starterUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Starter";
+
+  axios.get(starterUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/starter', {meals:meals});
+  })
+})
+
+router.get('/vegan', function(req, res) {
+  var veganUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegan";
+
+  axios.get(veganUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/vegan', {meals:meals});
+  })
+})
+
+router.get('/vegetarian', function(req, res) {
+  var vegetarianUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegetarian";
+
+  axios.get(vegetarianUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/vegetarian', {meals:meals});
+  })
+})
+
+router.get('/breakfast', function(req, res) {
+  var breakfastUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Breakfast";
+
+  axios.get(breakfastUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/breakfast', {meals:meals});
+  })
+})
+
+router.get('/goat', function(req, res) {
+  var goatUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Goat";
+
+  axios.get(goatUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/goat', {meals:meals});
+  })
+})
+
+
+
 module.exports = router;
