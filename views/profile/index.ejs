@@ -9,14 +9,4 @@ for each category
 display thumbnail 
 display name
 <br />
-<% categories.forEach(category => { %>
-  <div style="background-color: #f00;display:inline-block; margin-top:10px">
-    <div style="background-color: #0f0; width:200px">
-      <a href="https://www.themealdb.com/api/json/v1/1/filter.php?c=<%= category.strCategory %>"><img src="<%= category.strCategoryThumb %>" alt="<%= category.strCategory %>"></a>
-    </div>
-    <br />
-    <div style="background-color: #00f; width: 150px">
-      <%= category.strCategory %>
-    </div> 
-  </div>
-<% }) %>
+

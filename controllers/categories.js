@@ -9,12 +9,22 @@ const errorHandler = err => {
 }
 
 // GET
-router.get('/', (req, res) => {
-  res.render('categories');
-})
+// router.get('/', (req, res) => {
+//   res.render('categories');
+// })
+
+router.get('/', function(req, res) {
+  var mealUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
+
+  axios.get(mealUrl)
+  .then(function(apiResponse) {
+    var categories = apiResponse.data.categories;
+    res.render('categories/index', {categories: categories});
+  }).catch(errorHandler)
+});
 
 router.get('/beef', function(req, res) {
-  var beefUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef";
+  var beefUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`;
 
   axios.get(beefUrl)
   .then(function(apiResponse) {
@@ -143,6 +153,14 @@ router.get('/goat', function(req, res) {
   })
 })
 
-
+router.get('/show', function(req, res) {
+  var recipeUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}";
+  console.log(idMeal);
+  axios.get(recipeUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/show', {meals:meals});
+  })
+})
 
 module.exports = router;
