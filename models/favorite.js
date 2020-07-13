@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   favorite.init({
-    idMeal: DataTypes.STRING
+    idMeal: DataTypes.STRING,
+    strMealThumb: DataTypes.STRING,
+    strMeal: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'favorite',

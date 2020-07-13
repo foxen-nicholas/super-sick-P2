@@ -14,6 +14,7 @@ const db = require('./models');
 // want to add alink to our customer middleware for isLoggedIn
 const isLoggedIn = require('./middleware/isLoggedIn');
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const methodOverride = require('method-override');
 
 
 // App setup
@@ -24,6 +25,7 @@ app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(require('morgan')('dev'));
 app.use(helmet());
+app.use(methodOverride('_method'));
 
 // create new instance of class Sequelize Store
 const sessionStore = new SequelizeStore({

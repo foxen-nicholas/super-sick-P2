@@ -11,6 +11,12 @@ module.exports = {
       idMeal: {
         type: Sequelize.STRING
       },
+      strMealThumb: {
+        type: Sequelize.STRING
+      },
+      strMeal: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

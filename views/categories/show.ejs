@@ -2,9 +2,11 @@
 <% meals.forEach(meal => { %>
   <img style="height:150px;width:150px" src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
   <%= meal.strMeal %>
-
+  
   <form method="POST" action="/categories/favorites">
     <input hidden type="text" name="idMeal" value="<%= meal.idMeal %>">
+    <input hidden type="text" name="strMeal" value="<%= meal.strMeal %>">
+    <input hidden type="text" name="strMealThumb" value="<%= meal.strMealThumb %>">
     <button class="btn btn-primary" type="submit">Add to Favorite recipe</button>
   </form>
   

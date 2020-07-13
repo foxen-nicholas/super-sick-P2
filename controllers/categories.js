@@ -23,13 +23,13 @@ router.get('/', function(req, res) {
   }).catch(errorHandler)
 });
 
-router.get('/categories/:name', (req, res) => {
-  axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${get.params.name}`)
-  .then(function(apiResponse) {
-    var meals = apiResponse.data.meals;
-    res.render('category', (meals))
-  })
-})
+// router.get('/categories/:name', (req, res) => {
+//   axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${get.params.name}`)
+//   .then(function(apiResponse) {
+//     var meals = apiResponse.data.meals;
+//     res.render('category', (meals))
+//   })
+// })
 
 router.get('/beef', function(req, res) {
   var beefUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`;
@@ -165,7 +165,6 @@ router.get('/goat', function(req, res) {
 router.get('/favorites', function(req, res) {
   // TODO: Get all records from the DB and render to view
    db.favorite.findAll().then(favorites => {
-    var favorites = favorites;
      res.render('categories/favorites', {favorites: favorites});
    }).catch(errorHandler)
 });
@@ -187,13 +186,23 @@ router.get('/:idMeal', function(req, res) {
       idMeal: req.body.idMeal
     },
     defaults: {
-      idMeal: req.body.idMeal
+      idMeal: req.body.idMeal,
+      strMealThumb: req.body.strMealThumb,
+      strMeal: req.body.strMeal
     }
-  }).then(function([idMeal, created]) {
+  }).then(function([meal, created]) {
     res.redirect('/categories/favorites')
   })
 });
 
+router.delete('/:idMeal', function(req, res) {
+  db.favorite.destroy({
+    where: {
+      idMeal: req.params.idMeal
+    }
+  })
+  .then(res.redirect('/categories/favorites'))
+})
 
 
 module.exports = router;

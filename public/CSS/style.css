@@ -30,3 +30,8 @@ a {
 #login {
   text-align: center;
 }
+
+img.favorite-image {
+  width: 200px;
+  height: 200px;
+}
