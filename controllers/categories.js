@@ -5,7 +5,7 @@ const axios = require('axios');
 
 const errorHandler = err => {
   console.log("Error");
-  console.log(error)
+  console.log(err)
 }
 
 // GET
@@ -23,7 +23,13 @@ router.get('/', function(req, res) {
   }).catch(errorHandler)
 });
 
-
+router.get('/categories/:name', (req, res) => {
+  axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${get.params.name}`)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('category', (meals))
+  })
+})
 
 router.get('/beef', function(req, res) {
   var beefUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`;
@@ -155,16 +161,39 @@ router.get('/goat', function(req, res) {
   })
 })
 
+
+router.get('/favorites', function(req, res) {
+  // TODO: Get all records from the DB and render to view
+   db.favorite.findAll().then(favorites => {
+    var favorites = favorites;
+     res.render('categories/favorites', {favorites: favorites});
+   }).catch(errorHandler)
+});
+
 router.get('/:idMeal', function(req, res) {
-db.recipe.findOne({
-    where: {idMeal: req.params.idMeal}
-  })
   var recipeUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`;
    axios.get(recipeUrl)
    .then(function(apiResponse) {
      var meals = apiResponse.data.meals;
      res.render('categories/show', {meals:meals});
-   })
+   }).catch(errorHandler)
  })
+
+
+ router.post('/favorites', function(req, res) {
+  // TODO: Get form data and add a new record to DB
+  db.favorite.findOrCreate({
+    where: {
+      idMeal: req.body.idMeal
+    },
+    defaults: {
+      idMeal: req.body.idMeal
+    }
+  }).then(function([idMeal, created]) {
+    res.redirect('/categories/favorites')
+  })
+});
+
+
 
 module.exports = router;

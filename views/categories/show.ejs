@@ -3,4 +3,9 @@
   <img style="height:150px;width:150px" src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
   <%= meal.strMeal %>
 
+  <form method="POST" action="/categories/favorites">
+    <input hidden type="text" name="idMeal" value="<%= meal.idMeal %>">
+    <button class="btn btn-primary" type="submit">Add to Favorite recipe</button>
+  </form>
+  
 <% }) %>
