@@ -72,6 +72,16 @@ router.get('/lamb', function(req, res) {
   })
 })
 
+router.get('/miscellaneous', function(req, res) {
+  var miscUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Miscellaneous";
+
+  axios.get(miscUrl)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('categories/miscellaneous', {meals:meals});
+  })
+})
+
 router.get('/pasta', function(req, res) {
   var pastaUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Pasta";
 
@@ -163,7 +173,7 @@ router.get('/goat', function(req, res) {
 })
 
 router.get('/userrecipes', function(req, res) {
-  
+
 })
 
 router.get('/favorites', isLoggedIn, function(req, res) {

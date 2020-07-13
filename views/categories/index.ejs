@@ -5,12 +5,12 @@
   of a catergory and a picture to choose from. Once you find one you like, you may add it to the your favorites page.</p>
 
 <% categories.forEach(category => { %>
-  <div style="background-color: #f00;display:inline-block; margin-top:10px">
-    <div style="background-color: #0f0; width:200px">
+  <div class="categories-container">
+    <div class="category">
       <a href="/categories/<%= category.strCategory.toLowerCase() %>"><img src="<%= category.strCategoryThumb %>" alt="<%= category.strCategory %>"></a>
     </div>
     <br />
-    <div style="background-color: #00f; width: 150px">
+    <div class="category-text">
       <%= category.strCategory %>
     </div> 
   </div>
