@@ -23,6 +23,8 @@ router.get('/', function(req, res) {
   }).catch(errorHandler)
 });
 
+
+
 router.get('/beef', function(req, res) {
   var beefUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`;
 
@@ -153,14 +155,16 @@ router.get('/goat', function(req, res) {
   })
 })
 
-router.get('/show', function(req, res) {
-  var recipeUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}";
-  console.log(idMeal);
-  axios.get(recipeUrl)
-  .then(function(apiResponse) {
-    var meals = apiResponse.data.meals;
-    res.render('categories/show', {meals:meals});
+router.get('/:idMeal', function(req, res) {
+db.recipe.findOne({
+    where: {idMeal: req.params.idMeal}
   })
-})
+  var recipeUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.idMeal}`;
+   axios.get(recipeUrl)
+   .then(function(apiResponse) {
+     var meals = apiResponse.data.meals;
+     res.render('categories/show', {meals:meals});
+   })
+ })
 
 module.exports = router;

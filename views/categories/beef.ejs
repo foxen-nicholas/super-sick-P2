@@ -7,7 +7,7 @@ display name
 <% meals.forEach(meal => { %>
   <div style="background-color: #f00;display:inline-block; margin-top:10px">
     <div style="background-color: #0f0; width:200px">
-      <a href="categories/show"><img style="height:150px;width:150px" src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>"></a>
+      <a href="/categories/<%= meal.idMeal %>"><img style="height:150px;width:150px" src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>"></a>
     </div>
     <br />
     <div style="background-color: #00f; width: 150px">
