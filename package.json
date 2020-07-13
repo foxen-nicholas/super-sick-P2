@@ -29,7 +29,8 @@
     "passport-local": "^1.0.0",
     "pg": "^8.2.2",
     "rowdy-logger": "^1.0.2",
-    "sequelize": "^5.22.0"
+    "sequelize": "^5.22.0",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {},
   "repository": {
