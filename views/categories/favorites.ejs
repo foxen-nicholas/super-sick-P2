@@ -5,7 +5,7 @@
     <img class="favorite-image" src="<%= favorite.strMealThumb %>" alt="<%= favorite.strMeal %>">
     <br />
     <a href="/categories/<%= favorite.idMeal %>"><%= favorite.strMeal %></a>
-    <form method="POST" action="/categories/favorites/?_method=DELETE">
+    <form method="POST" action="/categories/<%= favorite.idMeal %>/?_method=DELETE">
       <button class="btn btn-primary" type="submit">Remove Recipe</button>
     </form>
   </div>

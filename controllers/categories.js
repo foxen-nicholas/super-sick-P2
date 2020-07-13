@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models');
 const axios = require('axios');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 const errorHandler = err => {
   console.log("Error");
@@ -162,7 +163,7 @@ router.get('/goat', function(req, res) {
 })
 
 
-router.get('/favorites', function(req, res) {
+router.get('/favorites', isLoggedIn, function(req, res) {
   // TODO: Get all records from the DB and render to view
    db.favorite.findAll().then(favorites => {
      res.render('categories/favorites', {favorites: favorites});
