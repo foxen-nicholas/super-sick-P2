@@ -1,0 +1,12 @@
+<h1>Use the form below to add your own recipe!</h1>
+<%= userrecipes.forEach(userrecipe => {
+  <% userrecipe.strMeal %>
+  <% userrecipe.strDescription %>
+
+<form method="POST" action="/categories/userrecipe">
+  <input type="text" name="strMeal" value="<%= userrecipe.strMeal %>">
+  <input type="text" name="strMealThumb" value="<%= userrecipe.strMealDescription %>">
+  <button class="btn btn-primary" type="submit">Add to Favorite recipe</button>
+</form>
+
+<% }) %>

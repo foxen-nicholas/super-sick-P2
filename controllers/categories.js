@@ -162,6 +162,9 @@ router.get('/goat', function(req, res) {
   })
 })
 
+router.get('/userrecipes', function(req, res) {
+  
+})
 
 router.get('/favorites', isLoggedIn, function(req, res) {
   // TODO: Get all records from the DB and render to view
@@ -205,5 +208,26 @@ router.delete('/:idMeal', function(req, res) {
   .then(res.redirect('/categories/favorites'))
 })
 
+router.get('/userrecipes', isLoggedIn, function(req, res) {
+  // TODO: Get all records from the DB and render to view
+   db.userrecipe.findAll().then(userrecipe => {
+     res.render('categories/userrecipes', {userrecipe: userrecipe});
+   }).catch(errorHandler)
+});
+
+router.post('/userrecipes', function(req, res) {
+  // TODO: Get form data and add a new record to DB
+  db.userrecipe.findOrCreate({
+    where: {
+      strMeal: req.body.strMeal
+    },
+    defaults: {
+      strMeal: req.body.strMeal,
+      strMealDescription: req.body.strMealDescription
+    }
+  }).then(function([meal, created]) {
+    res.redirect('/categories/userecipes')
+  })
+});
 
 module.exports = router;
