@@ -1,0 +1,5 @@
+idMeal: DataTypes.STRING,
+    strMealThumb: DataTypes.STRING,
+    strMeal: DataTypes.STRING
+    strMeal: DataTypes.STRING,
+    strMealDescription: DataTypes.STRING
