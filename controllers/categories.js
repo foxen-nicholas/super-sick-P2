@@ -24,13 +24,13 @@ router.get('/', function(req, res) {
   }).catch(errorHandler)
 });
 
-// router.get('/categories/:name', (req, res) => {
-//   axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${get.params.name}`)
-//   .then(function(apiResponse) {
-//     var meals = apiResponse.data.meals;
-//     res.render('category', (meals))
-//   })
-// })
+router.get('/categories/:name', (req, res) => {
+  axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${get.params.name}.toLowercase()`)
+  .then(function(apiResponse) {
+    var meals = apiResponse.data.meals;
+    res.render('category', (meals))
+  })
+})
 
 router.get('/beef', function(req, res) {
   var beefUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`;
@@ -221,7 +221,7 @@ router.delete('/:idMeal', function(req, res) {
 router.get('/userrecipes', isLoggedIn, function(req, res) {
   // TODO: Get all records from the DB and render to view
    db.userrecipe.findAll().then(userrecipe => {
-     res.render('categories/userrecipes', {userrecipe: userrecipe});
+     res.render('profile/userrecipes', {userrecipe: userrecipe});
    }).catch(errorHandler)
 });
 
@@ -236,7 +236,7 @@ router.post('/userrecipes', function(req, res) {
       strMealDescription: req.body.strMealDescription
     }
   }).then(function([meal, created]) {
-    res.redirect('/categories/userecipes')
+    res.redirect('/profile/userecipes')
   })
 });
 

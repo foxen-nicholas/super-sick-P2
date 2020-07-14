@@ -27,10 +27,10 @@ router.post('/register', function(req, res, next) {db.user.findOrCreate({
       // authenticate user and start authorization process
       console.log("User created!");
       passport.authenticate('local', {
-        succesRedirect: '/profile',
+        succesRedirect: '/categories',
         successFlash: 'Thanks for signing up!'
       }) (req, res, next);
-      res.redirect("/");
+      res.redirect("/categories");
     } else {
       // else if user already exists
       // send error to user that email already exists

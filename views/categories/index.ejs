@@ -1,17 +1,17 @@
 
-<h1>Hello, Welcome to my recipe app!</h1>
+<h1>Hello and Welcome to my recipe app!</h1>
 
 <h3>Below you will find the name 
   of a catergory and a picture to choose from. Once you find one you like, you may add it to the your favorites page.</h3>
 
-<% categories.forEach(category => { %>
-  <div class="categories-container">
-    <div class="category">
-      <a href="/categories/<%= category.strCategory.toLowerCase() %>"><img src="<%= category.strCategoryThumb %>" alt="<%= category.strCategory %>"></a>
+  <% categories.forEach(category => { %>
+    <div class="categories-container">
+      <div class="category">
+        <a href="/categories/<%= category.strCategory.toLowerCase() %>"><img src="<%= category.strCategoryThumb %>" alt="<%= category.strCategory %>"></a>
+      </div>
+      <br />
+      <div class="category-text">
+        <%= category.strCategory %>
+      </div> 
     </div>
-    <br />
-    <div class="category-text">
-      <%= category.strCategory %>
-    </div> 
-  </div>
-<% }) %>
+  <% }) %>

@@ -8,6 +8,9 @@ const errorHandler = err => {
   console.log("Error");
   console.log(error)
 }
+router.get('/', function(req, res) {
+  res.render("profile/index");
+});
 
 router.get('/', function(req, res) {
   var mealUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
